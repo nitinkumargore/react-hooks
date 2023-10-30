@@ -12,8 +12,12 @@ const slowComputationFunc = () => {
 
 const UseMemoHook = () => {
   const [count, setCount] = useState(0);
-  // const countComputationVal = useMemo(() => slowComputationFunc(), []);
-  const countComputationVal = slowComputationFunc();
+
+   // With useMemo function gets called only once as it is memorized. It will get called again only when 
+  const countComputationVal = useMemo(() => slowComputationFunc(), []);
+
+  // Without useMemo function gets called on every render
+  // const countComputationVal = slowComputationFunc();
 
   return (
     <div>
