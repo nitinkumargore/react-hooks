@@ -27,13 +27,15 @@ function App() {
   return (
     <div>
       <ThemeProvider>
-        {/* <BrowserRouter> */}
-          <div style={{display:'Flex', gap:'10px'}}>
+        <>
+          <h1>Demo of some React Hooks</h1>
+          <hr/>
+          <div style={{display:'Flex', gap:'10px', margin:'20px 0'}}>
             {pages.map((p,i)=>
                <button key={`${p.label+'_'+i}`} onClick={()=>  navogate('/'+p.path)}>{p.label}</button>
             )}
           </div>
-          <hr/>
+          <hr style={{margin:'0 0 20px 0'}}/>
           <Routes>
             <Route path="/state" element={<UseStateHookExample />} />
             <Route path="/effect" element={<UseEffectHookExample />} />
@@ -45,7 +47,7 @@ function App() {
             <Route path="/imperative" element={<UseImperativeHandleHook />} />
             <Route path="/callback" element={<UseCallbackHook />} />
           </Routes>
-        {/* </BrowserRouter> */}
+          </>
       </ThemeProvider>
     </div>
   );

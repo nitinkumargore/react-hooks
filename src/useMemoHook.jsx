@@ -5,12 +5,15 @@ import { useState, useMemo } from "react";
 2. useMemo is also used when referential value is to be compared. Like run useEffect only when a value changes. So although written in func comp, wrap it in useMemo so that it wont change each time.
  */
 const slowComputationFunc = () => {
+  console.log('useMemo - Inside slowComputationFunc()');
   for (let i = 0; i < 1000000000; i++) {}
+  return 'Completed slowComputationFunc()';
 };
 
 const UseMemoHook = () => {
   const [count, setCount] = useState(0);
-  const countComputationVal = useMemo(() => slowComputationFunc(), []);
+  // const countComputationVal = useMemo(() => slowComputationFunc(), []);
+  const countComputationVal = slowComputationFunc();
 
   return (
     <div>
@@ -21,7 +24,9 @@ const UseMemoHook = () => {
       <button onClick={() => setCount((prevCount) => prevCount - 1)}>
         Decrement
       </button>
-      {countComputationVal}
+      <div>
+        {countComputationVal}
+      </div>
     </div>
   );
 };
